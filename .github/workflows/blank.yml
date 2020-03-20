@@ -31,7 +31,8 @@ jobs:
             git pull --all
             git fetch dest
             git fetch src
-            git checkout src/master
+            git branch --set-upstream-to=src/master master
+            git checkout master
             for branch in `git branch -r | grep -w ' src/feature-*' | sed 's/^[^\/]*\///g'` 
             do
               git checkout --track src/$branch
