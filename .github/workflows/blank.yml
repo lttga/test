@@ -29,8 +29,8 @@ jobs:
             git remote add dest "${{ secrets.DEST }}"
             git remote add src "${{ secrets.SRC }}"
             git pull src master
-            git branch --set-upstream-to=src/master master
-            git checkout master
+            git branch --set-upstream-to=src/master tmp_master
+            git checkout tmp_master
             git pull --all
             git fetch dest
             git fetch src
