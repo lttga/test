@@ -25,7 +25,7 @@ jobs:
       run: |
             git remote add dest git@github.com:lttga/dest.git
             git pull --all
-            git fetch --all
+            git fetch dest
             git remote -v
             git branch -a
             for branch in `git branch -r | grep -w ' origin/feature*' | sed 's/^[^\/]*\///g'` 
