@@ -25,8 +25,8 @@ jobs:
             DEST: "${{ secrets.DEST }}"
             SRC: "${{ secrets.SRC }}"
       run: |
-            git remote add dest "${DEST}"
-            git remote add src "${SRC}"
+            git remote add dest $DEST
+            git remote add src $SRC
             git pull --all
             git fetch dest
             git fetch src
