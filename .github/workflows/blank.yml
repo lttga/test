@@ -22,9 +22,11 @@ jobs:
     - name: Sync repos
       env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+            DEST: "${{ secrets.DEST }}"
+            SRC: "${{ secrets.SRC }}"
       run: |
-            git remote add dest "${{ secrets.DEST }}"
-            git remote add src "${{ secrets.SRC }}"
+            git remote add dest "${DEST}"
+            git remote add src "${SRC}"
             git pull --all
             git fetch dest
             git fetch src
