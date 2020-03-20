@@ -27,6 +27,5 @@ jobs:
             git pull --all
             for branch in `git branch -r | grep -w ' origin/feature*' | sed 's/^[^\/]*\///g'` 
             do
-              git checkout $branch
-              git push --force -u dest $branch
+              git push --force dest $branch:$branch
             done
