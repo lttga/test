@@ -24,13 +24,15 @@ jobs:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
             git remote add dest git@github.com:lttga/dest.git
+            git remote add src git@github.com:lttga/test.git
             git pull --all
             git fetch dest
-            git fetch origin
-            for branch in `git branch -r | grep -w ' origin/feature-*' | sed 's/^[^\/]*\///g'` 
+            git fetch src
+            for branch in `git branch -r | grep -w ' src/feature-*' | sed 's/^[^\/]*\///g'` 
             do
-              git checkout --track origin/$branch
+              git checkout --track src/$branch
               git push -f -u dest $branch
             done
             git remote rm dest
+            git remote rm src
             git remote --verbose
