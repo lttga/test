@@ -21,13 +21,10 @@ jobs:
       env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-            git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
             git remote add dest git@github.com:lttga/dest.git
             git pull --all
             git fetch dest
             git fetch origin
-            git remote -v
-            git branch -a
             for branch in `git branch -r | grep -w ' origin/feature-*' | sed 's/^[^\/]*\///g'` 
             do
               git checkout --track origin/$branch
