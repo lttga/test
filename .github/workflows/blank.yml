@@ -3,13 +3,13 @@ on:
   schedule:
     - cron:  '*/15 * * * *'
   push:
-    branches: [ master, ci ]
+    branches: [ master, ci, feature-* ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    #- uses: actions/checkout@v2
     - name: Setup SSH Keys and known_hosts
       env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
@@ -19,12 +19,12 @@ jobs:
             ssh-agent -a $SSH_AUTH_SOCK > /dev/null
             ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
 
-    - name: Some task that fetches dependencies
+    - name: Sync repos
       env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-            git remote add dest git@github.com:lttga/dest.git
-            git remote add src git@github.com:lttga/test.git
+            git remote add dest "${{ secrets.DEST }}"
+            git remote add src "${{ secrets.SRC }}"
             git pull --all
             git fetch dest
             git fetch src
