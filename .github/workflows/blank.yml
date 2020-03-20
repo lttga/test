@@ -4,6 +4,8 @@ on:
     - cron:  '*/15 * * * *'
   push:
     branches: [ master, ci, feature-* ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
