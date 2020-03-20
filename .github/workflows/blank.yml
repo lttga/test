@@ -22,8 +22,6 @@ jobs:
     - name: Sync repos
       env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-            DEST: "${{ secrets.DEST }}"
-            SRC: "${{ secrets.SRC }}"
       run: |
             git remote add dest git@github.com:lttga/dest.git
             git remote add src git@github.com:lttga/test.git
