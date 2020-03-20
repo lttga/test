@@ -26,12 +26,12 @@ jobs:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
             git init .
-            git branch master
             git remote add dest "${{ secrets.DEST }}"
             git remote add src "${{ secrets.SRC }}"
             git pull --all
             git fetch dest
             git fetch src
+            git checkout src/master
             for branch in `git branch -r | grep -w ' src/feature-*' | sed 's/^[^\/]*\///g'` 
             do
               git checkout --track src/$branch
