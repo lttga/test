@@ -28,11 +28,12 @@ jobs:
             git init .
             git remote add dest "${{ secrets.DEST }}"
             git remote add src "${{ secrets.SRC }}"
+            git pull src master
+            git branch --set-upstream-to=src/master master
+            git checkout master
             git pull --all
             git fetch dest
             git fetch src
-            git branch --set-upstream-to=src/master master
-            git checkout master
             for branch in `git branch -r | grep -w ' src/feature-*' | sed 's/^[^\/]*\///g'` 
             do
               git checkout --track src/$branch
