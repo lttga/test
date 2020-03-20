@@ -1,4 +1,4 @@
-name: GIT push
+name: GIT
 on:
   push:
     branches: [ feature-* ]
