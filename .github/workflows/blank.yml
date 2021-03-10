@@ -31,7 +31,7 @@ jobs:
           script: |
             whoami
             ls -al
-            docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}  ${{ github.repository }}/test
+            docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}  docker.pkg.github.com${{ github.repository }}/test
       - name: Build container image
         uses: docker/build-push-action@v1
         with:
