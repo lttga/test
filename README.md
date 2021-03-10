@@ -1,3 +1,1 @@
-cron
-2
-3
+ci test
