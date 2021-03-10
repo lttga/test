@@ -22,9 +22,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+          ref: 'master'
       - name: multiple command
         uses: appleboy/ssh-action@master
         with:
+          ref: 'master'
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -35,6 +37,7 @@ jobs:
       - name: Build container image
         uses: docker/build-push-action@v1
         with:
+          ref: 'master'
           username: ${{ github.actor }}
           password: ${{ secrets.R_SECRET }}
           registry: docker.pkg.github.com
